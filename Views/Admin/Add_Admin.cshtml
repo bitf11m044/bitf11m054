@@ -1,0 +1,273 @@
+﻿@model ElectroMart.Models.User
+<html>
+<head>
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8" />
+	<title>Registration Form</title>	
+    <meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	<link href="~/Content/styles.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+</head>
+ 
+<body>
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">Add Admin</h1>
+      </div>
+      <div class="modal-body">
+    @using(Html.BeginForm("Create","Admin",FormMethod.Post, new {enctype="multipart/form-data"}))
+          {
+             @Html.AntiForgeryToken()
+             @Html.ValidationSummary(true)
+              <table>
+                  <tr>
+                  <td>
+                      <div class="editor-label">
+              @Html.LabelFor(m => m.Username)
+                          </div>
+                      </td>
+                      <td>
+                          <div class="editor-field">
+                           @Html.EditorFor(m=>m.Username,new {@placeholder="Username"})
+                           @Html.ValidationMessageFor(m => m.Username)
+                      </div>
+                              </td>
+                      </tr>
+                  <tr>
+                      <td></td>
+                      <td>
+                      <div id="checkresult"><p id="result"></p></div>
+                          </td>
+                  </tr>
+        
+              <tr>
+                <td>
+                    <div class="editor-label">
+              @Html.LabelFor(m=> m.Picture)
+                    </div>
+                </td>
+                <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m => m.Picture, new { type = "file", name="image" })
+                           @*@Html.ValidationMessageFor(m => m.Picture)*@
+                      </div>
+                </td>
+              </tr>
+           
+              
+              <tr>
+                  <td>
+                      <div class="editor-label">
+              @Html.LabelFor(m=>m.Password)
+                      </div>
+                  </td>
+                  <td>
+                      <div class="editor-field">
+              @Html.EditorFor(m=>m.Password,new {@placeholder="Password"})
+                           @Html.ValidationMessageFor(m => m.Password)
+                      </div>
+                    </td>
+               </tr>
+        
+
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.ScreenName)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.ScreenName,new {@placeholder="Screen Name"})
+
+                      </div>
+                  </td>
+               </tr>
+        
+              
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.EmailId)
+                             @Html.ValidationMessageFor(m => m.EmailId)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.EmailId,new {@placeholder="Email Id e.g wow@gmail.com"})
+                      </div>
+                  </td>
+               </tr>
+
+
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.Phoneno)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.Phoneno,new {@placeholder="PHONE #"})
+                      </div>
+                  </td>
+               </tr>
+              
+              <tr>
+                  <td>
+                      <div class="editor-label">
+              @Html.LabelFor(m=>m.Gender)
+                      </div>
+                   </td>
+                  <td>
+                      <div class="editor-field">
+              @Html.RadioButtonFor(m => m.Gender, "Male")Male
+              @Html.RadioButtonFor(m=>m.Gender,"Female")Female
+                       </div>
+                      </td>
+                  </tr>
+        
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.Dob)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.Dob,new {@placeholder="Date"})
+                      </div>
+                  </td>
+               </tr>
+
+
+
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.Country)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.Country,new {@placeholder="Country"})
+                      </div>
+                  </td>
+               </tr>
+
+
+        
+               <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.Address)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.Address,new {@placeholder="Address"})
+                      </div>
+                  </td>
+               </tr>
+             
+
+       
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.City)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.City,new {@placeholder="City"})
+                      </div>
+                  </td>
+               </tr>
+              
+
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.PinCode)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.PinCode,new {@placeholder="PinCode"})
+                      </div>
+                  </td>
+               </tr>
+              
+                  <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.State)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.State,new {@placeholder="State"})
+                      </div>
+                  </td>
+               </tr>
+              
+                   </table>
+                <div></div>
+                  <input type="submit" value="Add" name="Submit" class="submit" />
+          }
+                          <button id="bCheck">Check</button>
+</div>
+      </div>
+      </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script>
+        $(document).ready(function () {
+
+            $('#bCheck').click(function () {
+
+                var userName = $('#Username').val();
+                if (userName != "") {
+                    $('#result').text("Checking...");
+
+                    $.getJSON("/User/CheckUserName?UserName=" + userName, function (data) {
+
+                        if (data) {
+                            $('#result').text("User Name already exists, Please Select some other username");
+                        }
+                        else {
+                            $('#result').text("User Name is available");
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>

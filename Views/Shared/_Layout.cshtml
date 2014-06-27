@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head id="head">
+    
+   
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Electro Mart</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="~/Content/custom.css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/shop-homepage.css" rel="stylesheet">
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/Home/Home_Page">Electro Mart</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="~/Home/About">About</a>
+                    </li>
+                    <li><a href="~/Home/Services">Services</a>
+                    </li>
+                    <li><a href="~/Home/Contact">Contact</a> </li>
+                    <li><a href="~/Product/Cart">Cart</a></li>
+                    <li><a href="~/Product/Logout">Logout</a></li>
+                        
+
+                </ul>
+                 @*<form action="~/Product/SearchResult" method="get" class="navbar-form navbar-left pull-right" role="search">*@
+                    <div class="navbar-form navbar-left pull-right">
+                        <input type="text" class="form-control" placeholder="Search" id="search" name="search"/>
+                         <button type="submit" class="btn btn-default" id="submit" >Submit</button>
+                    </div>
+                   
+               @* </form>*@
+
+                    
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                var text = $('#search').val();
+                if (text == '') {
+                }
+                else {
+                    $.getJSON("/Product/SearchBar?searchtext=" + text, function (data) {
+                        var arr_list = [];
+                        $('#row').empty();
+
+                        $.each(data, function (i, x) {
+                            $('#row').append("<div class='col-sm-4 col-lg-4 col-md-4'><div class='thumbnail'><div><img src='" + "/Images/" + x.Picture + "' alt=''></div><div class='caption'><h4 class='pull-right'>" + x.Price + "</h4><h4><a href='/Product/shop_item?item_id=" + x.Id + "'>" + x.Name + "</a></h4><p>" + x.Description + "</p><h6><a href='/Product/Add_to_cart?item_id=" + x.Id + "'>ADD TO CART</a></h6></div></div></div>");
+                        });
+                    });
+                }
+            });
+        });
+</script>
+
+</body>
+</html>

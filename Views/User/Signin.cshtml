@@ -1,0 +1,105 @@
+﻿@model ElectroMart.Models.User
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/scripts.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.min.js"></script>
+		<script src="~/Scripts/bootstrap.min.js"></script>
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquery")
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Login Form</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="~/Content/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<!--login modal-->
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">Login</h1>
+      </div>
+      <div class="modal-body">
+          @*<form class="form col-md-12 center-block" method="get" action="~/Home/Home_Page">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="UName" id="UserName">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" placeholder="Password">
+            </div>
+
+            <div class="form-group" id="d2"></div>
+              <script>$('#d2').hide();</script>
+
+            <div class="form-group">
+              <button type="submit" value="Sign In" class="btn btn-primary btn-lg btn-block" id="bSignin">Sign In</button>
+              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+            </div>
+              <script>
+                  $(document).ready(function () {
+
+                      $('#d2').hide();
+
+                      $('#bSignin').click(function () {
+
+                          var userName = $('#UserName').val();
+
+                          //alert('User Name ='+ userName);
+                          //$('#d2').text = "Checking...";
+                          $('#d2').show();
+                          $.getJSON("/User/CheckUserNamePassword?UserName=" + userName, function (data) {
+                             // $('#d2').show();
+                              if (data) {
+                                  $('#d2').text("Valid Username Password");
+                                  
+
+                              }
+                              else {
+                                  $('#d2').text("Invalid Username or Password");
+                              }
+                          });
+
+                      });
+
+                  });
+              </script>
+          </form>*@
+          @using (Html.BeginForm("CheckUserNamePassword", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+          {
+              @Html.AntiForgeryToken()
+              @Html.ValidationSummary(true)
+              @Html.LabelFor(m => m.Username)
+              @Html.TextBoxFor(m=>m.Username,new {@placeholder="Username"})
+              @Html.LabelFor(m=>m.Password)
+              @Html.TextBoxFor(m=>m.Password,new {@placeholder="Password", type="Password"})
+              <input type="submit" value="Login" name="Submit" class="submit" />
+          }
+                  
+
+
+      </div>
+      @*<div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true" id="b3">Cancel</button>
+		  </div>	
+      </div>*@
+  </div>
+  </div>
+</div>
+	<!-- script references -->
+		
+	</body>
+</html>

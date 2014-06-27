@@ -1,0 +1,195 @@
+@*<!DOCTYPE html>
+<html>
+	<head>
+
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+		<title>Electro Mart</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="~/Content/custom.css"/>
+            <!-- Bootstrap core CSS -->
+        <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+        <!-- Add custom CSS here -->
+        <link href="~/Content/shop-homepage.css" rel="stylesheet">
+        
+        		
+	</head>
+
+	<body>
+		
+		<!--nav class="navbar">
+			<div class="container">
+				<a class="navbar-brand" href="#">Electo Mart</a>
+				<div class="navbar-right">
+					<div class="container minicart"></div>
+				</div>
+			</div>
+		</!--nav-->
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/Home/Home_Page">Electra Mart</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="~/Home/About">About</a>
+                    </li>
+                    <li><a href="~/Home/Services">Services</a>
+                    </li>
+                    <li><a href="~/Home/Contact">Contact</a> </li>
+                    <li><a href="~/Home/Cart">Cart</a></li>
+                    <li><a href="~/Home/index">Logout</a></li>
+                        
+
+                </ul>
+                <form action="~/Home/SearchResult" method="get" class="navbar-form navbar-left pull-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" />
+
+
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>*@
+
+
+        <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/Home/Home_Page">Electra Mart</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling ->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="~/Home/About">About</a>
+                    </li>
+                    <li><a href="~/Home/Services">Services</a>
+                    </li>
+                    <li><a href="~/Home/Contact">Contact</a> </li>
+                    <li><a href="~/Home/Cart">Cart</a></li>
+                    <li><a href="~/Home/index">Logout</a></li>
+                        
+
+                </ul>
+                <form action="~/Home/SearchResult" method="get" class="navbar-form navbar-left pull-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" />
+
+
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <!-- /.navbar-collapse -->
+        <!--/div>
+        <!-- /.container -->
+    <!--/nav>
+
+            <a href="~/Views/Shared/_Layout.cshtml">~/Views/Shared/_Layout.cshtml</a>
+        -->
+@model List<ElectroMart.Models.Product>
+		@{
+            Layout = "~/Views/Shared/_Layout.cshtml";
+		}
+        <div id="row">
+		<div class="container-fluid breadcrumbBox text-center">
+			<ol class="breadcrumb">
+			    <li class="active"><a href="#">Order</a></li>
+			</ol>
+		</div>
+		
+		<div class="container text-center">
+
+			<div class="col-md-5 col-sm-12">
+				<div class="bigcart"></div>
+				<h1>Your shopping cart</h1>
+			</div>
+			
+			<div class="col-md-7 col-sm-12 text-left">
+				<ul>
+					<li class="row list-inline columnCaptions">
+						<span>QTY</span>
+						<span>ITEM</span>
+						<span>Price</span>
+					</li>
+                    @foreach(var s in Model)
+                    {
+					    <li class="row">
+						    <span class="quantity">1</span>
+						    <span class="itemName">@s.Name</span>
+						    <span class="price">@s.Price</span>
+					    </li>
+                    }
+					@*<li class="row">
+						<span class="quantity">50</span>
+						<span class="itemName">Party Cups</span>
+						<span class="popbtn"><a class="arrow"></a></span>
+						<span class="price">$5.00</span>
+					</li>
+					<li class="row">
+						<span class="quantity">20</span>
+						<span class="itemName">Beer kegs</span>
+						<span class="popbtn"><a class="arrow"></a></span>
+						<span class="price">$919.99</span>				
+					</li>
+					<li class="row">
+						<span class="quantity">18</span>
+						<span class="itemName">Pound of beef</span>
+						<span class="popbtn"><a class="arrow"></a></span>
+						<span class="price">$269.45</span>
+					</li>
+					<li class="row">
+						<span class="quantity">1</span>
+						<span class="itemName">Bullet-proof vest</span>
+						<span class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="arrow"></a></span>
+						<span class="price">$450.00</span>				
+					</li>*@
+					<li class="row totals">
+						<span class="itemName">Total:</span>
+						<span class="price">@ViewBag.total</span>
+						<span class="order"> <a class="text-center" href="~/Home/thankyou">ORDER</a></span>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- The popover content -->
+
+		<div id="popover" style="display: none">
+			<a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+		</div>
+		</div>
+		<!-- JavaScript includes -->
+
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+		<script src="~/Scripts/bootstrap.min.js"></script>
+		<script src="~/Scripts/customjs.js"></script>
+
+	</body>
+</html>

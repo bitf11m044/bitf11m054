@@ -1,0 +1,62 @@
+﻿@model List<ElectroMart.Models.Product>
+<!DOCTYPE html>
+<head id="head">
+    
+    
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Electro Mart</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="~/Content/custom.css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="~/Content/shop-homepage.css" rel="stylesheet">
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/Admin/Home_Page">Electro Mart</a>
+            </div>
+        </div>
+    </nav>
+
+    @foreach(var s in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="~/Images/@s.Picture" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">@s.Price</h4>
+                                <h4>@s.Name</h4>
+                                <h6><a href="~/Admin/ModifyProduct/@s.Id">Edit</a></h6>
+                                <h6><a href="~/Admin/DeleteProduct/@s.Id">Delete</a></h6>
+                                <p>@s.Description</p>
+                                <p>@s.Category</p>
+                            </div>
+                        </div>
+        </div>
+    }
+        
+</body>

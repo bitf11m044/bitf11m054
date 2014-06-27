@@ -1,0 +1,173 @@
+﻿@model ElectroMart.Models.Product
+<html>
+<head>
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8" />
+	<title>Modify Product</title>	
+    <meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	<link href="~/Content/styles.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+</head>
+ 
+<body>
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">Product</h1>
+      </div>
+      <div class="modal-body">
+    @using(Html.BeginForm("Modify_Prod_DB/","Admin",FormMethod.Post, new {enctype="multipart/form-data"}))
+          {
+             @Html.AntiForgeryToken()
+             @Html.ValidationSummary(true)
+              <table>
+                  <tr>
+                  <td>
+                      <div class="editor-label">
+              @Html.LabelFor(m => m.Id)
+                          </div>
+                      </td>
+                      <td>
+                          <div class="editor-field">
+                           @Html.EditorFor(m=>m.Id)
+                      </div>
+                              </td>
+                      </tr>
+
+
+                  <tr>
+                  <td>
+                      <div class="editor-label">
+              @Html.LabelFor(m => m.Name)
+                          </div>
+                      </td>
+                      <td>
+                          <div class="editor-field">
+                           @Html.EditorFor(m=>m.Name)
+                           @Html.ValidationMessageFor(m => m.Name)
+                      </div>
+                              </td>
+                      </tr>
+                  
+                  
+                  
+                  
+                          
+              <tr>
+                <td>
+                    <div class="editor-label">
+              @Html.LabelFor(m=> m.Picture)
+                    </div>
+                </td>
+                <td>
+                      <div class="editor-field">
+                          <img src="@Model.Picture"/>
+                    @Html.TextBoxFor(m => m.Picture, new { type = "file", name="image" })
+                           @*@Html.ValidationMessageFor(m => m.Picture)*@
+                      </div>
+                </td>
+              </tr>
+           
+              
+              <tr>
+                  <td>
+                      <div class="editor-label">
+              @Html.LabelFor(m=>m.Price)
+                      </div>
+                  </td>
+                  <td>
+                      <div class="editor-field">
+              @Html.EditorFor(m=>m.Price)
+                           @Html.ValidationMessageFor(m => m.Price)
+                      </div>
+                    </td>
+               </tr>
+        
+
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.Description)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.Description)
+
+                      </div>
+                  </td>
+               </tr>
+        
+              
+              <tr>
+                  <td>
+                        <div class="editor-label">
+              @Html.LabelFor(m=>m.Category)
+                             @Html.ValidationMessageFor(m => m.Category)
+                        </div>
+                    </td>
+
+                  <td>
+                      <div class="editor-field">
+              @Html.TextBoxFor(m=>m.Category)
+                      </div>
+                  </td>
+               </tr>
+
+
+              
+                   </table>
+                <div></div>
+                  <input type="submit" value="Edit" name="Submit" class="submit" />
+          }
+</div>
+      </div>
+      </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script>
+        $(document).ready(function () {
+
+            $('#checkresult').hide();
+
+            $('#bcheck').click(function () {
+
+                var userName = $('#UserName').val();
+
+                //alert('User Name ='+ userName);
+                //$('#d1').text = "Checking...";
+                $('#d1').show();
+                $.getJSON("/User/CheckUserName?UserName=" + userName, function (data) {
+                    $('#d1').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database");
+
+
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }
+                });
+
+            });
+
+        });
+    </script>*@
+
+
+ 
+</body>
+</html>
